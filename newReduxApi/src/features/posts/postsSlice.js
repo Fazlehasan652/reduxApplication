@@ -28,7 +28,7 @@ const postsSlice = createSlice({
       .addCase(fetchPosts.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        state.error = action.error?.message || "An unKnown error  occured";
+        state.error = action.error?.message || "An unKnown error  occurred";
       });
   },
 });

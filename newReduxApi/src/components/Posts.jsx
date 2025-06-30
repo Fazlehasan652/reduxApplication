@@ -1,7 +1,12 @@
+import { useState } from "react";
 import { useGetPostsQuery } from "../app/apiSlice";
 
 const Posts = () => {
-  const { data: posts, isLoading, isError, error } = useGetPostsQuery(5);
+  const [request, setRequest] = useState(false)
+  const { data: posts, isLoading, isError, error } = useGetPostsQuery(5, {
+    skip: request,
+    refetchOnMountOrArgChange:true
+  });
 
   let content;
   if (isLoading) {
@@ -9,7 +14,7 @@ const Posts = () => {
   }
   if (!isLoading && isError) {
     content = (
-      <h1 className="text-red-500">Something wrong happened - {error}</h1>
+      <h1 className='text-red-500'>Something wrong happened - {error}</h1>
     );
   }
 
@@ -28,7 +33,7 @@ const Posts = () => {
   }
 
   return (
-    <div className="p-10 h-auto flex flex-col items-center justify-center space-y-5 bg-white rounded shadow">
+    <div className='p-10 h-auto flex flex-col items-center justify-center space-y-5 bg-white rounded shadow'>
       {content}
     </div>
   );

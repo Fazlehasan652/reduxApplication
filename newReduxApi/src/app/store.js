@@ -1,6 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import counterReduser from "../features/counters/counterSlice";
 import { apiSlice } from "./apiSlice";
+import { setupListeners } from "@reduxjs/toolkit/query";
 
 // custom Middleware
 
@@ -21,4 +22,5 @@ const store = configureStore({
     return getDeafultMiddleware().concat(apiSlice.middleware);
   },
 });
+setupListeners(store.dispatch)
 export default store;
