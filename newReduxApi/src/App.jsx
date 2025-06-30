@@ -4,6 +4,7 @@ import Counters from "./components/Counters";
 import State from "./components/State";
 import { decrement, increment } from "./features/counters/counterSlice";
 import Posts from "./components/Posts";
+import AddPost from "./components/AddPost";
 // import initialdata from "./data/initialdata";
 
 function App() {
@@ -81,6 +82,9 @@ function App() {
       </div>
       <div className="max-w-md mx-auto mt-10 space-y-5">
         {showPosts && <Posts />}
+      </div>
+      <div className="max-w-md mx-auto mt-10 space-y-5">
+        <AddPost/>
       </div>
     </div>
   );
